@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from cart.cart import Cart
-from cart.models import OrderItem
+from orders.models import OrderItem
 from orders.forms import OrderCreateForm
 from .tasks import order_created
 
