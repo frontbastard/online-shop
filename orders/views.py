@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from cart.cart import Cart
+from online_shop import settings
 from orders.models import OrderItem
 from orders.forms import OrderCreateForm
 from .tasks import order_created
@@ -32,7 +33,19 @@ def order_create(request):
             # redirect for payment
             return redirect("payment:process")
     else:
-        form = OrderCreateForm()
+        if settings.DEBUG:
+            initial_data = {
+                "first_name": "Julio",
+                "last_name": "Rodriguez",
+                "email": "juliorodriguez@email.com",
+                "address": "Santa Maria ave., 7",
+                "postal_code": "666666",
+                "city": "San Francisco",
+            }
+        else:
+            initial_data = {}
+
+        form = OrderCreateForm(initial=initial_data)
     return render(
         request,
         "orders/order/create.html",
