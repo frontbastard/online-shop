@@ -10,6 +10,7 @@ class Coupon(models.Model):
         validators=[MinValueValidator(0), MaxValueValidator(100)],
         help_text="Percentage value (0 to 100)"
     )
+    active = models.BooleanField()
 
     def __str__(self):
         return self.code
