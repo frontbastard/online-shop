@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from online_shop import settings
 from orders.models import Order
 from payment.tasks import payment_completed
+from shop.models import Product
 from shop.recommender import Recommender
 
 
@@ -45,7 +46,8 @@ def stripe_webhook(request):
             order.save()
 
             # save items bought for product recommendations
-            products = order.items.values_list("product_id", flat=True)
+            product_ids = order.items.values_list("product_id")
+            products = Product.objects.filter(id__in=product_ids)
             r = Recommender()
             r.products_bought(products)
 
