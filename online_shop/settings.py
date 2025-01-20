@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "payment.apps.PaymentConfig",
     "shop.apps.ShopConfig",
     "coupons.apps.CouponsConfig",
+    "rosetta",
 ]
 
 MIDDLEWARE = [
@@ -110,8 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en"
 LANGUAGES = [
-    ("en-us", _("English")),
-    ("es-es", _("Spanish")),
+    ("en", _("English")),
+    ("es", _("Spanish")),
 ]
 LOCALE_PATHS = [
     BASE_DIR / "locale",
