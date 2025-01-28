@@ -26,7 +26,7 @@ class Category(TranslatableModel):
         )
 
 
-class Product(models.Model):
+class Product(TranslatableModel):
     translations = TranslatedFields(
         name=models.CharField(max_length=200),
         slug=models.SlugField(max_length=200),

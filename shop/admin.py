@@ -13,7 +13,7 @@ class CategoryAdmin(TranslatableAdmin):
 
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(TranslatableAdmin):
     list_display = [
         "name",
         "slug",
