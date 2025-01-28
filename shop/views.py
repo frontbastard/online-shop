@@ -37,7 +37,6 @@ def product_detail(request, id, slug):
         id=id,
         translations__language_code=language,
         translations__slug=slug,
-        slug=slug,
         available=True,
     )
     cart_product_form = CartAddProductForm()
